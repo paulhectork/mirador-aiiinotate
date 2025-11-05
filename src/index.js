@@ -1,21 +1,20 @@
 import Mirador from 'mirador';
 import Mae from "mirador-annotation-editor";
 import { LocalStorageAdapter } from "mirador-annotation-editor";
-// import { AiiinotateAdapter } from "mirador-annotation-editor";
+import { AiiinotateAdapter } from "mirador-annotation-editor";
 
 console.log("Mirador", Mirador);
 console.log("Mae", Mae);
-console.log("LocalStorageAdapter", LocalStorageAdapter);
-// console.log("AiiinotateAdapter", AiiinotateAdapter);
+console.log("LocalStorageAdapter", LocalStorageAdapter);  // undefined
+console.log("AiiinotateAdapter", AiiinotateAdapter);  // undefined
 
 const iiifAnnotationVersion = 2;
-
 
 const config = {
   id: 'miradorRoot',
   language: 'en',
   annotation: {
-    adapter: ()=>{}, // (canvasId) => new AiiinotateAdapter(process.env.APP_BASE_URL, iiifAnnotationVersion, canvasId),
+    adapter: (canvasId) => new AiiinotateAdapter(process.env.APP_BASE_URL, iiifAnnotationVersion, canvasId),
     allowTargetShapesStyling: true,
     commentTemplates: [{
       content: '<h4>Comment</h4><p>Comment content</p>',
