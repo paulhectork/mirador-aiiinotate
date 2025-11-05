@@ -1,20 +1,23 @@
 import Mirador from 'mirador';
 import Mae from "mirador-annotation-editor";
 
-// TEST 1:
-// import from root => undefined
-import { LocalStorageAdapter } from "mirador-annotation-editor";
-import { AiiinotateAdapter } from "mirador-annotation-editor";
+// TEST 1: both adapters are undefined
+// import from root
+import { LocalStorageAdapter as LocalStorageAdapter1 } from "mirador-annotation-editor";
+import { AiiinotateAdapter as AiiinotateAdapter1 } from "mirador-annotation-editor";
 
-// TEST 2:
+// TEST 2: raises an error
 // try to use the same path as in dev pre-packaging: not working either, logically
-import { LocalStorageAdapter } from "mirador-annotation-editor/src/annotationAdapter/LocalStorageAdapter";
-import { AiiinotateAdapter } from "mirador-annotation-editor/src/annotationAdapter/AiiinotateAdapter";
+import { LocalStorageAdapter as LocalStorageAdapter2 } from "mirador-annotation-editor/src/annotationAdapter/LocalStorageAdapter";
+import { AiiinotateAdapter as AiiinotateAdapter2 } from "mirador-annotation-editor/src/annotationAdapter/AiiinotateAdapter";
 
 console.log("Mirador", Mirador);  // defined
 console.log("Mae", Mae);  // defined
-console.log("LocalStorageAdapter", LocalStorageAdapter);  // undefined
-console.log("AiiinotateAdapter", AiiinotateAdapter);  // undefined
+console.log("LocalStorageAdapter1", LocalStorageAdapter1);  // undefined
+console.log("AiiinotateAdapter1", AiiinotateAdapter1);  // undefined
+console.log("LocalStorageAdapter2", LocalStorageAdapter2);  // undefined
+console.log("AiiinotateAdapter2", AiiinotateAdapter2);  // undefined
+
 
 const iiifAnnotationVersion = 2;
 
@@ -22,7 +25,8 @@ const config = {
   id: 'miradorRoot',
   language: 'en',
   annotation: {
-    adapter: (canvasId) => new AiiinotateAdapter(process.env.APP_BASE_URL, iiifAnnotationVersion, canvasId),
+    // AiiinotateAdapter1 is undefined
+    adapter: (canvasId) => new AiiinotateAdapter1(process.env.APP_BASE_URL, iiifAnnotationVersion, canvasId),
     allowTargetShapesStyling: true,
     commentTemplates: [{
       content: '<h4>Comment</h4><p>Comment content</p>',
