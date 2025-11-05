@@ -1,7 +1,15 @@
 import Mirador from 'mirador';
 import Mae from "mirador-annotation-editor";
+
+// TEST 1:
+// import from root => undefined
 import { LocalStorageAdapter } from "mirador-annotation-editor";
 import { AiiinotateAdapter } from "mirador-annotation-editor";
+
+// TEST 2:
+// try to use the same path as in dev pre-packaging: not working either, logically
+import { LocalStorageAdapter } from "mirador-annotation-editor/src/annotationAdapter/LocalStorageAdapter";
+import { AiiinotateAdapter } from "mirador-annotation-editor/src/annotationAdapter/AiiinotateAdapter";
 
 console.log("Mirador", Mirador);  // defined
 console.log("Mae", Mae);  // defined
