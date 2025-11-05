@@ -3,8 +3,8 @@ import Mae from "mirador-annotation-editor";
 import { LocalStorageAdapter } from "mirador-annotation-editor";
 import { AiiinotateAdapter } from "mirador-annotation-editor";
 
-console.log("Mirador", Mirador);
-console.log("Mae", Mae);
+console.log("Mirador", Mirador);  // defined
+console.log("Mae", Mae);  // defined
 console.log("LocalStorageAdapter", LocalStorageAdapter);  // undefined
 console.log("AiiinotateAdapter", AiiinotateAdapter);  // undefined
 
