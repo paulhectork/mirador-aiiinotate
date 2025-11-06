@@ -15,7 +15,7 @@
   "dependencies": {
     "aiiinotate": "^0.2.7",
     "mirador": "^4.0.0",
-    "mirador-annotation-editor": "^1.1.4",
+    "mirador-annotation-editor": "^1.1.5-aiiinotate-export",
     "parcel": "^2.16.1"
   }
 }
