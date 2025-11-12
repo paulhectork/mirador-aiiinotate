@@ -1,26 +1,8 @@
 import Mirador from 'mirador';
 import Mae from "mirador-annotation-editor";
 
-// TEST 1: both adapters are undefined
-// import from root
-// import { LocalStorageAdapter } from "mirador-annotation-editor";  // undefined
-// import { AiiinotateAdapter } from "mirador-annotation-editor";  // undefined
-
-// TEST 2: raises an error
-// try to use the same path as in dev pre-packaging: not working either, logically
-// import { LocalStorageAdapter as LocalStorageAdapter2 } from "mirador-annotation-editor/src/annotationAdapter/LocalStorageAdapter";
-// import { AiiinotateAdapter as AiiinotateAdapter2 } from "mirador-annotation-editor/src/annotationAdapter/AiiinotateAdapter";
-
-
 const AiiinotateAdapter = Mae.at(-1);
-console.log("Mirador", Mirador);  // defined
-console.log("Mae", Mae);  // defined
-console.log("AiiinotateAdapter", AiiinotateAdapter);  // undefined
-console.log("AiiinotateAdapter", AiiinotateAdapter);  // undefined
-// console.log("LocalStorageAdapter2", LocalStorageAdapter2);  // undefined
-// console.log("AiiinotateAdapter2", AiiinotateAdapter2);  // undefined
-
-
+const annotationPlugins = Mae.slice(0,-1);
 const iiifAnnotationVersion = 2;
 
 const config = {
@@ -92,5 +74,5 @@ const config = {
   ],
 };
 
-Mirador.viewer(config)
+Mirador.viewer(config, [...annotationPlugins]);
 
