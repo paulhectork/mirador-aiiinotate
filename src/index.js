@@ -1,9 +1,9 @@
 import Mirador from 'mirador';
 import Mae from "mirador-annotation-editor";
+import 'react-quill/dist/quill.snow.css';
 
-const AiiinotateAdapter = Mae.at(-1);
-const annotationPlugins = Mae.slice(0,-1);
 const iiifAnnotationVersion = 2;
+const { AiiinotateAdapter } = Mae.at(-1);
 
 const config = {
   id: 'miradorRoot',
@@ -74,5 +74,5 @@ const config = {
   ],
 };
 
-Mirador.viewer(config, [...annotationPlugins]);
+Mirador.viewer(config, [Mae]);
 

@@ -14,6 +14,8 @@
   "license": "GPL-3.0-or-later",
   "dependencies": {
     "mirador": "^4.0.0",
-    "mirador-annotation-editor": "^1.1.5-aiiinotate-export",
+    "mirador-annotation-editor": "^1.1.6",
+    "parcel": "^2.16.1",
+    "aiiinotate": "^0.2.14"
   }
 }
