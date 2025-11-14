@@ -9,7 +9,7 @@ const config = {
   id: 'miradorRoot',
   language: 'en',
   annotation: {
-    adapter: (canvasId) => new AiiinotateAdapter(process.env.APP_BASE_URL, iiifAnnotationVersion, canvasId),
+    adapter: (canvasId) => new AiiinotateAdapter(process.env.AIIINOTATE_BASE_URL, iiifAnnotationVersion, canvasId),
     allowTargetShapesStyling: true,
     commentTemplates: [{
       content: '<h4>Comment</h4><p>Comment content</p>',

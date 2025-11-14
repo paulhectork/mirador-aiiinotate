@@ -13,9 +13,10 @@
   "author": "",
   "license": "GPL-3.0-or-later",
   "dependencies": {
+    "aiiinotate": "^0.2.15",
+    "http-server": "^14.1.1",
     "mirador": "^4.0.0",
     "mirador-annotation-editor": "^1.1.6",
-    "parcel": "^2.16.1",
-    "aiiinotate": "^0.2.14"
+    "parcel": "^2.16.1"
   }
 }

@@ -1,15 +1,22 @@
 # syntax=docker/dockerfile:1
 FROM node:23.11-alpine
 
+# mirador port
+ARG PORT
+ENV PORT=PORT
+
 # set up environment
 ENV DIR=/mirador
 ENV TERM=linux
 SHELL ["/bin/bash", "-c"]
 
+# root of the app
 WORKDIR $DIR
+# copy the entire root directory
 COPY .. .
 # for debug: install `iproute2` which provides CLI `ss` to monitor active ports
 RUN apt update && apt install iproute2 -y
+# install packages
 RUN npm i -g
 
 CMD npm run start

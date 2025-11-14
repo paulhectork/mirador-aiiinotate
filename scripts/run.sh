@@ -8,9 +8,14 @@ cd "$ROOT_DIR"
 
 check_envfile;
 
+source "$ENV_FILE";
+
 aiiinotate --env "$ENV_FILE" -- serve prod &
 
-rm -rf dist .parcel-cache && parcel src/index.html;
+# build the mirador app
+rm -rf "$ROOT_DIR"/dist "$ROOT_DIR"/.parcel-cache && parcel build "$ROOT_DIR"/src/index.html;
+# serve it
+http-server "$ROOT_DIR"/dist -p "$MIRADOR_PORT";
 
 # once the above command returns, kill aiiinotate (MainThread = nodejs parent thread).
 kill $(pgrep MainThread);
