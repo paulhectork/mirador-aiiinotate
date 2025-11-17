@@ -1,6 +1,6 @@
 # mirador-aiiinotate
 
-This repo contains an example of an integration of [aiiinotate](https://github.com/Aikon-platform/aiiinotate) with [mirador 4](https://github.com/ProjectMirador/mirador), using [mirador-annotations-editor](https://github.com/TETRAS-IIIF/mirador-annotation-editor/stargazers).
+Reference implementation of [aiiinotate](https://github.com/Aikon-platform/aiiinotate) with [mirador 4](https://github.com/ProjectMirador/mirador), using [mirador-annotations-editor](https://github.com/TETRAS-IIIF/mirador-annotation-editor/stargazers), including a Docker deploy to orchestrate all those components.
 
 This reference implementation can be used in 2 ways:
 - dev, or local usage
