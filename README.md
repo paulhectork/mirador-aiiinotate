@@ -47,4 +47,12 @@ cp .env.template .env
 # build your docker images and serve your app
 cd docker
 bash docker.sh build
+# after a first build, if your app has not changed, you can just serve the image you build before:
+bash docker.sh start
 ```
+
+---
+
+## License 
+
+GNU GPL 3.0
