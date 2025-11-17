@@ -2,13 +2,15 @@
 
 Reference implementation of [aiiinotate](https://github.com/Aikon-platform/aiiinotate) with [mirador 4](https://github.com/ProjectMirador/mirador), using [mirador-annotations-editor](https://github.com/TETRAS-IIIF/mirador-annotation-editor/stargazers), including a Docker deploy to orchestrate all those components.
 
-This reference implementation can be used in 2 ways:
+This implementation can be used in 2 ways:
 - dev, or local usage
 - prod, using Docker containers.
 
 ---
 
 ## Dev / local usage
+
+In dev, we use bash scripts and commands defined in `package.json` to setup and use all components.
 
 ```bash
 # clone the repo and cd in it
@@ -38,6 +40,7 @@ The docker architecture  orchestrates 3 containers:
 - `aiiinotate`: the application server (used as a backend for `mirador`)
 - `mirador`: Mirador 4 integrated with Mirador-Annotations-Editor
 
+Usage:
 
 1. Install [Docker](https://docs.docker.com/engine/install/)
 2. Setup your docker
