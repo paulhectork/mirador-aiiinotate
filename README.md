@@ -57,6 +57,8 @@ cp .env.template .env
 bash docker/docker.sh build path-to-env-file
 # after a first build, if your app has not changed, you can just serve the image you build before:
 bash docker/docker.sh start path-to-env-file
+# and to stop your dockers, run:
+bash docker/docker.sh path-to-env-file
 ```
 
 ---
