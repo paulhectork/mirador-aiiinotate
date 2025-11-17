@@ -8,19 +8,22 @@
 
 set -e
 
+# ----------------------------------------
+# definitions
+
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd );
-cd "$ROOT_DIR"
-
-# $MODE defines if we run the app in dev or in prod.
-# only allowed value is "dev" (use no value for a prod build)
-MODE="$1"
-if [ ! "$MODE" = "dev" ] && [ ! "$MODE" = "prod" ];
-then echo -e "\nincorrect argument for $0: '$1' \nUSAGE: bash $0 [dev|prod]\n"; exit 1;
-fi;
-
+ROOT_DIR="$SCRIPT_DIR/.."
 source "$SCRIPT_DIR/utils.sh"
-check_envfile;
-source "$ENV_FILE";
+
+usage() {
+    cat <<EOF
+USAGE: bash $0 mode env
+
+    - mode ("dev"|"prod"): the build to use. 'dev' for local, 'prod' for docker deploy
+    - env: relative or absolute path to your env file
+EOF
+
+}
 
 # start mongodb and aiiinotate in dev
 maybe_start_aiiinotate() {
@@ -48,6 +51,24 @@ start_mirador() {
     http-server "$ROOT_DIR"/dist -p "$MIRADOR_PORT";
 }
 
+# ----------------------------------------
+# run
+
+# $MODE defines if we run the app in dev or in prod.
+# only allowed value is "dev" (use no value for a prod build)
+MODE="$1"
+if [ ! "$MODE" = "dev" ] && [ ! "$MODE" = "prod" ];
+then usage; exit 1;
+fi;
+
+# get the env file, see that it exists and return it as an absolute path
+ENV_FILE="$2";
+ENV_FILE=$(realpath "$ENV_FILE");
+validate_envfile "$ENV_FILE";
+
+source "$ENV_FILE";
+
+cd "$ROOT_DIR"
 maybe_start_aiiinotate
 build_mirador
 start_mirador

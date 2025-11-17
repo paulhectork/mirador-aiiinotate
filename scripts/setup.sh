@@ -8,7 +8,7 @@ source "$SCRIPT_DIR/utils.sh";
 
 cd "$ROOT_DIR";
 
-check_envfile;
+validate_envfile;
 
 npm i;
 

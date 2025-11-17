@@ -10,8 +10,9 @@ start_mongod() {
     fi;
 }
 
-check_envfile() {
-    if [ ! -f "$ENV_FILE" ];
-    then echo "'.env' file does not exist. exiting... (at '$ENV_FILE')"; exit 1;
+validate_envfile() {
+    env_file=$1
+    if [ ! -f "$env_file" ];
+    then echo ".env file not found. exiting... (at '$env_file')"; exit 1;
     fi;
 }

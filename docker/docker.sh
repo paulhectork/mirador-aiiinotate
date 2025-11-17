@@ -57,7 +57,7 @@ start_containers() {
 }
 
 stop_containers() {
-    sudo docker compose --env-file "$ENV_DOCKER" down;
+    sudo docker compose --env-file "$ENV_DOCKER" stop;
 }
 
 env_to_docker;
