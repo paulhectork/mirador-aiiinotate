@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # build and serve the mirador-mae-aiiinotate ingration.\
-# $2 defines 2 modes to run the app: "dev" and prod.
+# $2 defines 2 modes to run the app: "dev" and "prod".
 # - in prod, this script just runs mirador.
 # - in dev, this script runs mongo, aiiinotate and mirador.
 # why ? in prod, we use a docker-compose where mongo and aiiinotate run in their own containers.
@@ -14,8 +14,8 @@ cd "$ROOT_DIR"
 # $MODE defines if we run the app in dev or in prod.
 # only allowed value is "dev" (use no value for a prod build)
 MODE="$1"
-if [ ! -z "$MODE" ] && [ ! "$MODE" = "dev" ]
-then echo -e "\nincorrect argument for $0: '$1' \nUSAGE: bash $0 [dev]\n"; exit 1;
+if [ ! "$MODE" = "dev" ] && [ ! "$MODE" = "prod" ];
+then echo -e "\nincorrect argument for $0: '$1' \nUSAGE: bash $0 [dev|prod]\n"; exit 1;
 fi;
 
 source "$SCRIPT_DIR/utils.sh"
@@ -45,7 +45,6 @@ build_mirador() {
 
 # serve the mirador app
 start_mirador() {
-    # serve it
     http-server "$ROOT_DIR"/dist -p "$MIRADOR_PORT";
 }
 
