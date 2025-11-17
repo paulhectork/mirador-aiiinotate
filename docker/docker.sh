@@ -5,7 +5,7 @@ set -e;
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 # basic / dev config
-ENV_CONFIG="$SCRIPT_DIR/../config/.env"
+ENV_CONFIG="$SCRIPT_DIR/../.env"
 # docker specific config, created by `env_to_docker`
 ENV_DOCKER="$SCRIPT_DIR/.env"
 

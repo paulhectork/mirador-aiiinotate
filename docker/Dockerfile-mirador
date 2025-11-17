@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM node:23.11-alpine
+FROM node:23.11
 
 # mirador port
 ARG PORT
@@ -12,11 +12,16 @@ SHELL ["/bin/bash", "-c"]
 
 # root of the app
 WORKDIR $DIR
-# copy the entire root directory
-COPY .. .
 # for debug: install `iproute2` which provides CLI `ss` to monitor active ports
 RUN apt update && apt install iproute2 -y
+# copy the package.json
+COPY ../package.json $DIR/package.json
+# install dependencies
+RUN npm i;
+# copy the entire root directory
+COPY .. $DIR
 # install packages
-RUN npm i -g
+# RUN npm i -g; npm i -g parcel; npm i -g http-server;
+# RUN npm i -g; npm i -g parcel; npm i -g http-server;
 
 CMD npm run start-prod
