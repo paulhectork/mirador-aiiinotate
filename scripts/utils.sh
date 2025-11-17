@@ -1,7 +1,19 @@
 #!/usr/bin/env bash
 
-SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd );
-ROOT_DIR="$SCRIPT_DIR/..";
+get_os() {
+    unameOut="$(uname -s)"
+    case "${unameOut}" in
+        Linux*)     os=Linux;;
+        Darwin*)    os=Mac;;
+        CYGWIN*)    os=Cygwin;;
+        MINGW*)     os=MinGw;;
+        MSYS_NT*)   os=Git;;
+        *)          os="UNKNOWN:${unameOut}"
+    esac
+    echo "${os}"
+}
+export OS;
+OS=$(get_os);
 
 start_mongod() {
     if ! systemctl is-active --quiet mongod;

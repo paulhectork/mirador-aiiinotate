@@ -2,26 +2,29 @@
 
 set -e;
 
-SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+# ----------------------------------------
+# definitions
 
+# path to current script
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 # basic / dev config
 ENV_CONFIG="$SCRIPT_DIR/../.env"
 # docker specific config, created by `env_to_docker`
 ENV_DOCKER="$SCRIPT_DIR/.env"
+# utils scripts
+UTILS="$SCRIPT_DIR/../scripts/utils.sh";
 
-get_os() {
-    unameOut="$(uname -s)"
-    case "${unameOut}" in
-        Linux*)     os=Linux;;
-        Darwin*)    os=Mac;;
-        CYGWIN*)    os=Cygwin;;
-        MINGW*)     os=MinGw;;
-        MSYS_NT*)   os=Git;;
-        *)          os="UNKNOWN:${unameOut}"
-    esac
-    echo "${os}"
+usage() {
+    cat <<EOF
+
+USAGE:
+    $0 {build|start|stop} env
+ARGUMENTS:
+    - {build|start|stop}: action on docker container
+    - env: relative or absolute path to your env file
+
+EOF
 }
-OS=$(get_os)
 
 # mac+linux compatible file replacements
 sed_repl () {
@@ -60,7 +63,13 @@ stop_containers() {
     sudo docker compose --env-file "$ENV_DOCKER" stop;
 }
 
+# ----------------------------------------
+# run
+
+source "$UTILS";
 env_to_docker;
+cd "$SCRIPT_DIR";
+pwd
 case "$1" in
     start)
         start_containers
@@ -74,7 +83,7 @@ case "$1" in
         start_containers
         ;;
     *)
-        echo "Usage: $0 {build|start|stop}"
+        usage;
         exit 1
         ;;
 esac;

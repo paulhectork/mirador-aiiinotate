@@ -17,9 +17,10 @@ source "$SCRIPT_DIR/utils.sh"
 
 usage() {
     cat <<EOF
-USAGE: bash $0 mode env
+USAGE:
+    bash $0 {dev|prod} env
 ARGUMENTS:
-    - mode ("dev"|"prod"): the build to use. 'dev' for local, 'prod' for docker deploy
+    - {dev|prod}: type of build to use. 'dev' for local, 'prod' for docker deploy
     - env: relative or absolute path to your env file
 EOF
 }

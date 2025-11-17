@@ -11,7 +11,8 @@ source "$SCRIPT_DIR/utils.sh";
 
 usage() {
     cat <<EOF
-USAGE: bash $0 env
+USAGE:
+    bash $0 env
 ARGUMENTS:
     - env: relative or absolute path to your env file
 EOF
