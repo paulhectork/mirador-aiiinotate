@@ -47,20 +47,20 @@ env_to_docker() {
     sed_repl s~^MONGODB_HOST=.*$~MONGODB_HOST=mongo~ "$ENV_DOCKER";
     sed_repl s~^AIIINOTATE_HOST=.*~AIIINOTATE_HOST=0.0.0.0~ "$ENV_DOCKER"
 }
-env_to_docker;
 
 build_containers () {
     sudo docker compose --env-file "$ENV_DOCKER" build --no-cache;
 }
 
 start_containers() {
-    sudo docker compose --env-file "$ENV_DOCKER" up --force-recreate;
+    sudo docker compose --env-file "$ENV_DOCKER" up -d;
 }
 
 stop_containers() {
     sudo docker compose --env-file "$ENV_DOCKER" down;
 }
 
+env_to_docker;
 case "$1" in
     start)
         start_containers
