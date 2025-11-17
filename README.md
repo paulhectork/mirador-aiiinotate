@@ -17,7 +17,7 @@ In dev, we use bash scripts and commands defined in `package.json` to setup and 
 git clone git@github.com:paulhectork/mirador-aiiinotate.git
 cd mirador-aiiinotate
 
-# setup your .env
+# setup your .env. if you want your .env elsewhere, see the "Env management" section below.
 cp .env.template .env
 # here, you should manually complete your .env to your requirements
 
@@ -25,7 +25,7 @@ cp .env.template .env
 bash scripts/setup_mongodb.sh
 
 # setup the apps
-npm run setup
+npm run setup path-to-env-file
 
 # build and serve mirador
 npm run start-dev
@@ -55,10 +55,20 @@ cp .env.template .env
 
 # build your docker images and serve your app
 cd docker
-bash docker.sh build
+bash docker.sh build path-to-env-file
 # after a first build, if your app has not changed, you can just serve the image you build before:
-bash docker.sh start
+bash docker.sh start path-to-env-file
 ```
+
+---
+
+## Environment management
+
+In the examples above, the `.env` is always at the root of the repository. But 
+- your .env can be anywhere in your machine. 
+- it is also possible to add to an external `.env` the contents defined in `.env.template`
+
+In any case, the `path-to-env-file` argument in the scripts above should be modified to reflect the actual path of your `.env`.
 
 ---
 
