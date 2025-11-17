@@ -20,8 +20,5 @@ COPY ../package.json $DIR/package.json
 RUN npm i;
 # copy the entire root directory
 COPY .. $DIR
-# install packages
-# RUN npm i -g; npm i -g parcel; npm i -g http-server;
-# RUN npm i -g; npm i -g parcel; npm i -g http-server;
 
 CMD npm run start-prod
