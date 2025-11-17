@@ -19,4 +19,4 @@ RUN apt update && apt install iproute2 -y
 # install packages
 RUN npm i -g
 
-CMD npm run start
+CMD npm run serve
