@@ -49,7 +49,7 @@ Usage:
 git clone git@github.com:paulhectork/mirador-aiiinotate.git
 cd mirador-aiiinotate
 
-# setup your .env
+# setup your .env. if you want your .env elsewhere, see the "Env management" section below.
 cp .env.template .env
 # here, you should manually complete your .env to your requirements
 
