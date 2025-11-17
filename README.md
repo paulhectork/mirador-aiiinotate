@@ -67,7 +67,7 @@ bash docker/docker.sh path-to-env-file
 
 In the examples above, the `.env` is always at the root of the repository. But 
 - your .env can be anywhere in your machine. 
-- it is also possible to add to an external `.env` the contents defined in `.env.template`. A possible use case is to integrate this module in a larger application that aldready has a `.env`, and to use a single `.env` to manage the parent app and `mirador-aiiinotate`.
+- it is also possible to add to an external `.env` the contents defined in `.env.template`. A possible use case is to integrate this module in a larger application that aldready has a `.env`, and use that application's `.env` to manage the parent app and `mirador-aiiinotate`.
 
 In any case, the `path-to-env-file` argument in the scripts above should be modified to reflect the actual path of your `.env`.
 
