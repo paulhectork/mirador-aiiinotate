@@ -54,10 +54,9 @@ cp .env.template .env
 # here, you should manually complete your .env to your requirements
 
 # build your docker images and serve your app
-cd docker
-bash docker.sh build path-to-env-file
+bash docker/docker.sh build path-to-env-file
 # after a first build, if your app has not changed, you can just serve the image you build before:
-bash docker.sh start path-to-env-file
+bash docker/docker.sh start path-to-env-file
 ```
 
 ---
