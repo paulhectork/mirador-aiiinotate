@@ -31,7 +31,13 @@ npm run start-dev
 
 --- 
 
-## Prod / docker usage
+## Prod / Docker usage
+
+The docker architecture  orchestrates 3 containers:
+- `mongo`: a mongo database
+- `aiiinotate`: the application server (used as a backend for `mirador`)
+- `mirador`: Mirador 4 integrated with Mirador-Annotations-Editor
+
 
 1. Install [Docker](https://docs.docker.com/engine/install/)
 2. Setup your docker
