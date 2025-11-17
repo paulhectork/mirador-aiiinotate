@@ -1,15 +1,15 @@
 import Mirador from 'mirador';
 import Mae from "mirador-annotation-editor";
+import 'react-quill/dist/quill.snow.css';
 
-const AiiinotateAdapter = Mae.at(-1);
-const annotationPlugins = Mae.slice(0,-1);
 const iiifAnnotationVersion = 2;
+const { AiiinotateAdapter } = Mae.at(-1);
 
 const config = {
   id: 'miradorRoot',
   language: 'en',
   annotation: {
-    adapter: (canvasId) => new AiiinotateAdapter(process.env.APP_BASE_URL, iiifAnnotationVersion, canvasId),
+    adapter: (canvasId) => new AiiinotateAdapter(process.env.AIIINOTATE_BASE_URL, iiifAnnotationVersion, canvasId),
     allowTargetShapesStyling: true,
     commentTemplates: [{
       content: '<h4>Comment</h4><p>Comment content</p>',
@@ -74,5 +74,5 @@ const config = {
   ],
 };
 
-Mirador.viewer(config, [...annotationPlugins]);
+Mirador.viewer(config, [Mae]);
 
