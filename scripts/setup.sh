@@ -28,6 +28,8 @@ fi;
 ENV_FILE=$(realpath "$ENV_FILE");
 validate_envfile "$ENV_FILE";
 
+source $ENV_FILE
+
 cd "$ROOT_DIR";
 npm i;
 start_mongod;
