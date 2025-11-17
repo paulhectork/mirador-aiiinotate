@@ -18,11 +18,10 @@ source "$SCRIPT_DIR/utils.sh"
 usage() {
     cat <<EOF
 USAGE: bash $0 mode env
-
+ARGUMENTS:
     - mode ("dev"|"prod"): the build to use. 'dev' for local, 'prod' for docker deploy
     - env: relative or absolute path to your env file
 EOF
-
 }
 
 # start mongodb and aiiinotate in dev
@@ -63,6 +62,9 @@ fi;
 
 # get the env file, see that it exists and return it as an absolute path
 ENV_FILE="$2";
+if [ -z "$ENV_FILE" ];
+then usage && exit 1;
+fi;
 ENV_FILE=$(realpath "$ENV_FILE");
 validate_envfile "$ENV_FILE";
 

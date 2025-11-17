@@ -21,4 +21,4 @@ RUN npm i;
 # copy the entire root directory
 COPY .. $DIR
 
-CMD npm run start-prod
+CMD npm run start-prod "$DIR/.env"
